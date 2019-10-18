@@ -149,7 +149,15 @@ export default {
       joinDate: moment().format("YYYY-MM-DD"),
       joinDateCalendarVisible: false,
       department: "",
-      departments: ["DP事業部", "ゲーム事業部", "音楽事業部", "コーポレート"],
+      departments: [
+        "DP事業部",
+        "モンスターラボゲームス",
+        "音楽事業部",
+        "コーポレート",
+        "コーポレートコミュニケーション室",
+        "ブランディング室",
+        "社長室"
+      ],
       nameKanji: "",
       nameKana: "",
       position: "",
