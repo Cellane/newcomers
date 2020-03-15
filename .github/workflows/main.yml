@@ -16,5 +16,7 @@ jobs:
     - uses: idoberko2/dokku-deploy-github-action@v1
       env:
         ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-        dokku-host: ${{ secrets.HOST }}
+        dokku-user: dokku
+        dokku-host: milanvit.net
+        remote-branch: master
         app-name: newcomers
