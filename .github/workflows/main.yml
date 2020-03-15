@@ -10,10 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-    - uses: vitalyliber/dokku-github-action@v2.0
+    - uses: idoberko2/dokku-deploy-github-action@v1
       env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
-        HOST: ${{ secrets.HOST }}
-        PROJECT: newcomers
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+        dokku-host: ${{ secrets.HOST }}
+        app-name: newcomers
