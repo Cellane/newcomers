@@ -60,7 +60,7 @@
         <v-row>
           <v-text-field
             v-model="seat"
-            label="席"
+            label="席（任意）"
             prepend-icon="mdi-seat"
           ></v-text-field>
         </v-row>
@@ -68,7 +68,7 @@
           <v-textarea
             v-model="career"
             label="① いままでのご経歴を簡略に"
-            prepend-icon="mdi-worker"
+            prepend-icon="mdi-account-hard-hat"
             auto-grow
             rows="1"
           ></v-textarea>
@@ -117,6 +117,13 @@
             auto-grow
             rows="1"
           ></v-textarea>
+        </v-row>
+        <v-row>
+          <v-text-field
+            v-model="kaonaviUrl"
+            label="カオナビ自己紹介（任意）"
+            prepend-icon="mdi-account-circle-outline"
+          ></v-text-field>
         </v-row>
       </v-col>
       <v-col cols="6">
@@ -167,7 +174,8 @@ export default {
       birthplace: "",
       hobbies: "",
       favoriteFood: "",
-      wordToEveryone: ""
+      wordToEveryone: "",
+      kaonaviUrl: ""
     }
   },
 
@@ -200,7 +208,8 @@ export default {
     },
     /* eslint-disable no-irregular-whitespace */
     slackText() {
-      return `----------------------------------------
+      return `
+----------------------------------------
 :confetti_ball:　新入社員のご紹介　:confetti_ball:
 ----------------------------------------
 
@@ -212,30 +221,32 @@ ${this.joinDayMonth}入社の方をご紹介いたします:tada::sparkles:
         this.nameKana
       }）さん*　:bouquet:
 職種：${this.position}
-＊${this.seat}
-
-*1)いままでのご経歴を簡略に：*
+${this.seat.length > 0 ? "＊" + this.seat + "\n" : ""}
+*1)いままでのご経歴を簡略に ／ Your career until now:*
 　${this.career.replace(/\n/g, "\n　")}
 
-*2)モンラボでの担当業務（職種）：*
+*2)モンラボでの担当業務（職種） ／ Duties at Monstar Lab：*
 　${this.duties.replace(/\n/g, "\n　")}
 
-*3)出身：*
+*3)出身 ／ Birth place：*
 　${this.birthplace.replace(/\n/g, "\n　")}
 
-*4)趣味：*
+*4)趣味 ／ Hobbies：*
 　${this.hobbies.replace(/\n/g, "\n　")}
 
-*5)好きな食べ物：*
+*5)好きな食べ物 ／ Favourite food：*
 　${this.favoriteFood.replace(/\n/g, "\n　")}
 
-*6)みなさんへ一言：*
-　${this.wordToEveryone.replace(/\n/g, "\n　")}`
+*6)みなさんへ一言 ／ A word to everyone:*
+　${this.wordToEveryone.replace(/\n/g, "\n　")}${
+        this.kaonaviUrl.length > 0
+          ? "\n\nーーーー\n▼カオナビ 自己紹介（更新中）\n" + this.kaonaviUrl
+          : ""
+      }`
     }
     /* eslint-enable no-irregular-whitespace */
   }
 }
 </script>
 
-<style>
-</style>
+<style></style>
