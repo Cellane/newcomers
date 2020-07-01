@@ -9,12 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
       with:
         fetch-depth: 0
 
-    - uses: vitalyliber/dokku-github-action@57b7fd8
-      with:
+    - name: Deploy to Dokku
+      uses: vitalyliber/dokku-github-action@57b7fd8
+      env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         HOST: ssh.milanvit.net
         PROJECT: newcomers
