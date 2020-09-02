@@ -52,13 +52,6 @@
         </v-row>
         <v-row>
           <v-text-field
-            v-model="position"
-            label="職種"
-            prepend-icon="mdi-account"
-          ></v-text-field>
-        </v-row>
-        <v-row>
-          <v-text-field
             v-model="seat"
             label="席（任意）"
             prepend-icon="mdi-seat"
@@ -157,17 +150,16 @@ export default {
       joinDateCalendarVisible: false,
       department: "",
       departments: [
-        "DP事業部",
-        "モンスターラボゲームス",
+        "DC事業部",
         "音楽事業部",
-        "コーポレート",
+        "コーポレート企画本部",
         "コーポレートコミュニケーション室",
         "ブランディング室",
-        "社長室"
+        "ファイナンス本部",
+        "CEO室"
       ],
       nameKanji: "",
       nameKana: "",
-      position: "",
       seat: "",
       career: "",
       duties: "",
@@ -220,7 +212,6 @@ ${this.joinDayMonth}入社の方をご紹介いたします:tada::sparkles:
 :bouquet:　*${this.department}　${this.nameKanji}（${
         this.nameKana
       }）さん*　:bouquet:
-職種：${this.position}
 ${this.seat.length > 0 ? "＊" + this.seat + "\n" : ""}
 *1)いままでのご経歴を簡略に ／ Your career until now:*
 　${this.career.replace(/\n/g, "\n　")}
