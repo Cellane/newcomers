@@ -204,28 +204,44 @@ export default {
         .format("MMMDo（dd）")
     },
 
+    aco() {
+      return this.department.startsWith("A.C.O.")
+    },
+
+    /* eslint-disable no-irregular-whitespace */
+    headerText() {
+      if (this.aco) {
+        return `みなさまお疲れ様です:smiley:\n${this.joinDayMonth}入社しました:tada::sparkles:\nこれからよろしくお願いいたします！`
+      }
+
+      return `みなさまお疲れ様です:smiley:\n${this.joinDayMonth}入社の方をご紹介いたします:tada::sparkles:\nこれからよろしくお願いいたします！`
+    },
+
+    nameText() {
+      if (this.aco) {
+        return `:bouquet:　*${this.department}　${this.nameKanji}（${this.nameKana}）*　:bouquet:`
+      }
+
+      return `:bouquet:　*${this.department}　${this.nameKanji}（${this.nameKana}）さん*　:bouquet:`
+    },
+
     dutiesQuestionText() {
-      if (this.department.startsWith("A.C.O.")) {
+      if (this.aco) {
         return "A.C.O.での担当業務（職種） ／ Duties at A.C.O.:"
       }
 
       return "モンラボでの担当業務（職種） ／ Duties at Monstar Lab:"
     },
 
-    /* eslint-disable no-irregular-whitespace */
     slackText() {
       return `
 ----------------------------------------
 :confetti_ball:　新入社員のご紹介　:confetti_ball:
 ----------------------------------------
 
-みなさまお疲れ様です:smiley:
-${this.joinDayMonth}入社の方をご紹介いたします:tada::sparkles:
-これからよろしくお願いいたします！
+${this.headerText}
 
-:bouquet:　*${this.department}　${this.nameKanji}（${
-        this.nameKana
-      }）さん*　:bouquet:
+${this.nameText}
 ${this.seat.length > 0 ? "＊" + this.seat + "\n" : ""}
 *1)いままでのご経歴を簡略に ／ Your career until now:*
 　${this.career.replace(/\n/g, "\n　")}
