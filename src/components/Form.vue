@@ -69,7 +69,7 @@
         <v-row>
           <v-textarea
             v-model="duties"
-            label="② モンラボでの担当業務（職種）"
+            label="② 担当業務（職種）"
             prepend-icon="mdi-calendar-check"
             auto-grow
             rows="1"
@@ -156,7 +156,12 @@ export default {
         "コーポレートコミュニケーション室",
         "ブランディング室",
         "ファイナンス本部",
-        "CEO室"
+        "CEO室",
+        "A.C.O. / Board部",
+        "A.C.O. / Design部",
+        "A.C.O. / Office Management部",
+        "A.C.O. / UX/IA部",
+        "A.C.O. / Project Direction部"
       ],
       nameKanji: "",
       nameKana: "",
@@ -198,6 +203,15 @@ export default {
         .locale("ja")
         .format("MMMDo（dd）")
     },
+
+    dutiesQuestionText() {
+      if (this.department.startsWith("A.C.O.")) {
+        return "A.C.O.での担当業務（職種） ／ Duties at A.C.O.:"
+      }
+
+      return "モンラボでの担当業務（職種） ／ Duties at Monstar Lab:"
+    },
+
     /* eslint-disable no-irregular-whitespace */
     slackText() {
       return `
@@ -216,7 +230,7 @@ ${this.seat.length > 0 ? "＊" + this.seat + "\n" : ""}
 *1)いままでのご経歴を簡略に ／ Your career until now:*
 　${this.career.replace(/\n/g, "\n　")}
 
-*2)モンラボでの担当業務（職種） ／ Duties at Monstar Lab:*
+*2)${this.dutiesQuestionText}*
 　${this.duties.replace(/\n/g, "\n　")}
 
 *3)出身 ／ Birth place:*
