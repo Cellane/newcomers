@@ -216,16 +216,16 @@ ${this.seat.length > 0 ? "＊" + this.seat + "\n" : ""}
 *1)いままでのご経歴を簡略に ／ Your career until now:*
 　${this.career.replace(/\n/g, "\n　")}
 
-*2)モンラボでの担当業務（職種） ／ Duties at Monstar Lab：*
+*2)モンラボでの担当業務（職種） ／ Duties at Monstar Lab:*
 　${this.duties.replace(/\n/g, "\n　")}
 
-*3)出身 ／ Birth place：*
+*3)出身 ／ Birth place:*
 　${this.birthplace.replace(/\n/g, "\n　")}
 
-*4)趣味 ／ Hobbies：*
+*4)趣味 ／ Hobbies:*
 　${this.hobbies.replace(/\n/g, "\n　")}
 
-*5)好きな食べ物 ／ Favourite food：*
+*5)好きな食べ物 ／ Favourite food:*
 　${this.favoriteFood.replace(/\n/g, "\n　")}
 
 *6)みなさんへ一言 ／ A word to everyone:*
