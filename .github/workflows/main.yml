@@ -15,8 +15,9 @@ jobs:
         fetch-depth: 0
 
     - name: Deploy to Dokku
-      uses: vitalyliber/dokku-github-action@57b7fd8
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        HOST: ssh.milanvit.net
-        PROJECT: newcomers
+      if: github.ref == 'refs/heads/master'
+      uses: dokku/github-action@master
+      with:
+        git_remote_url: 'ssh://dokku@ssh.milanvit.net:22/newcomers'
+        ssh_host_key: ${{ secrets.SSH_HOST_KEY }}
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
