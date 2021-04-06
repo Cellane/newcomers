@@ -104,8 +104,17 @@
         </v-row>
         <v-row>
           <v-textarea
+            v-model="star"
+            label="⑥ あなたのスターは？"
+            prepend-icon="mdi-star"
+            auto-grow
+            rows="1"
+          ></v-textarea>
+        </v-row>
+        <v-row>
+          <v-textarea
             v-model="wordToEveryone"
-            label="⑥ みなさんへ一言"
+            label="⑦ みなさんへ一言"
             prepend-icon="mdi-thought-bubble"
             auto-grow
             rows="1"
@@ -131,7 +140,7 @@
             @focus="$event.target.select()"
           >
             <template v-slot:append>
-              <v-btn small color="primary" @click="copy">Copy</v-btn>
+              <v-btn small color="primary" @click="copy">コピー</v-btn>
             </template>
           </v-textarea>
         </v-row>
@@ -171,6 +180,7 @@ export default {
       birthplace: "",
       hobbies: "",
       favoriteFood: "",
+      star: "",
       wordToEveryone: "",
       kaonaviUrl: ""
     }
@@ -258,7 +268,10 @@ ${this.seat.length > 0 ? "＊" + this.seat + "\n" : ""}
 *5)好きな食べ物 ／ Favourite food:*
 　${this.favoriteFood.replace(/\n/g, "\n　")}
 
-*6)みなさんへ一言 ／ A word to everyone:*
+*6)あなたのスターは？ ／ Who is your Monstar? (= who is your “my star”):*
+  ${this.star.replace(/\n/g, "\n　")}
+
+*7)みなさんへ一言 ／ A word to everyone:*
 　${this.wordToEveryone.replace(/\n/g, "\n　")}${
         this.kaonaviUrl.length > 0
           ? "\n\nーーーー\n▼カオナビ 自己紹介（更新中）\n" + this.kaonaviUrl
